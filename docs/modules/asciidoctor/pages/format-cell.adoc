@@ -1,0 +1,96 @@
+= Format Content by Cell
+
+[#cell-stayle]
+== Cell styles and their operators
+
+You can style all of the content in an individual cell by adding a style operator to the  xref:add-cells-and-rows.adoc#cell-specifiers[cell’s specifier].
+
+[cols="3*"]
+|===
+|Style |Operator |Description
+
+|AsciiDoc
+|`a`
+|Supports block elements (lists, delimited blocks, and block macros). This style effectively creates a nested, standalone AsciiDoc document. The parent document’s implicit attributes, such as `doctitle`, are shadowed and custom attributes are inherited.
+
+|Default
+|`d`
+|All of the markup that is permitted in a paragraph (i.e., inline formatting, inline macros) is supported.
+
+|Emphasis
+|`e`
+|Text is italicized.
+
+|Header
+|`h`
+|Applies the header semantics and styles to the text and cell borders.
+
+|Literal
+|`l`
+|Content is treated as if it were inside a literal block.
+
+|Monospace 
+|`m`
+|Text is rendered using a monospace font.
+
+|Strong
+|`s`
+|Text is bold.
+|===
+
+When a style operator isn’t explicitly assigned to a cell specifier (or column specifier), the cell falls back to the default (`d`) style and is processed as regular paragraph text.
+
+== Apply a style to a table cell
+
+The style operator is always entered last in a xref:add-cells-and-rows.adoc#cell-specifiers[cell specifier]. Don’t insert any spaces between the | and the operator.
+
+Let’s apply a style operator to each cell in <<ex-style-operator, Example 1>>.
+
+.Apply a style operator to a cell
+[source#ex-style-operator]
+----
+include::../examples/example-table.adoc[tag=table-7]
+----
+
+The table from <<ex-style-operator, Example 1>> is rendered below.
+
+.Result of <<ex-style-operator>>
+====
+include::../examples/example-table.adoc[tag=table-7]
+====
+
+== Override the column style on a cell
+
+When you assign a style operator to a cell, it overrides the column’s style operator. In <<ex-override,Example 2>>, the style operator assigned to the first column is overridden on two cells. The header row also overrides style operators. However, inline formatting markup is applied in addition to the style specified by an operator.
+
+.Override the column style using a cell style operator
+[source#ex-override]
+----
+include::../examples/example-table.adoc[tag=table-8]
+----
+
+The table from <<ex-override,Example 2>> is rendered below.
+
+.Result of <<ex-override>>
+====
+include::../examples/example-table.adoc[tag=table-8]
+====
+
+== Use AsciiDoc block elements in a table cell
+
+To use AsciiDoc block elements, such as delimited source blocks and lists, in a cell, place the `a`operator directly in front of the  xref:add-cells-and-rows.adoc#cell-specifiers[cell’s separator] (`|`). Don’t insert any spaces between the `|` and the operator.
+
+.Apply the AsciiDoc block style operator to two cells
+[source#ex-asci-style-oper]
+----
+include::../examples/example-table.adoc[tag=table-9]
+----
+
+The table from <<ex-asci-style-oper,Example 3>> is rendered below.
+
+.Result of <<ex-asci-style-oper>>
+====
+include::../examples/example-table.adoc[tag=table-9]
+====
+
+An AsciiDoc table cell effectively creates a nested document. As such, it inherits attributes from the parent document. If an attribute is set or explicitly unset in the parent document, it cannot be modified in the AsciiDoc table cell. There are a handful of exceptions to this rule, which includes doctype, toc, notitle (and its complement, showtitle), and compat-mode. Any newly defined attributes in the AsciiDoc table do not impact the attributes in the parent document. Instead, these attributes are scoped to the table cell.

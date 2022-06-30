@@ -1,0 +1,39 @@
+= How Antora Works
+
+Antora’s site generator handles all aspects of creating a documentation site, from fetching and aggregating to converting and arranging the content to publishing the files of the generated site. This page describes that process in detail.
+
+The default pipeline is opinionated to get you started as quickly as possible. But understand that Antora features a modular, open architecture. That means this architecture can accommodate specialized use cases by allowing custom Antora components, such as a validators, to be inserted into the pipeline at strategic points as needed. This page focuses on the core, built-in Antora components and capabilities in Antora.
+
+== Steps in the default generator pipeline
+
+The steps listed in this section describe the operations the site generator performs. Certain operations are executed asynchronously, so some of the steps below may occur in a different order or happen simultaneously. For example, the UI is fetched and loaded while the content is being aggregated to optimize use of the network.
+
+Build playbook::
+When you're ready to generate a site, you pass Antora a playbook file and tell it to run.
++
+A xref:playbook:index.adoc[playbook file is simple a configuration file] that can be written in YAML, JSON, or TOML. It contains information and settings such as what content to use, how the content should be processed, how the site should be generated, and where to publish the output.
++
+Antora reads the playbook file and builds a playbook from it, which it then uses to drive the pipeline.
+
+Lead content repositories::
+Using the xref:playbook:configure-content-sources.adoc[content sources]listed in the playbook, Antora loads the specified git repositories or local content folders in preparation to scan them for content files.
++
+For each remote URL, Antora clones the remote git repository into a local cache using the built-in git client. If the repository has already been cloned, Antora fetches updates if configured to do so.
++
+Finally, Antora determines which references (branches, tags, and start paths) to use from the specified repositories.
+
+Find the content source roots::
+Starting at a xref:content-source-repositories.adoc[content source root], Antora identifies a group of files as being part of a component version when it finds a component version descriptor file named antora.yml. These source files can be stored in a single repository, at the root of a repository or in a subpath, or distributed across multiple repositories.
+
+Transform input files into virtual file objects::
+Antora collects all of the files—​text, images, samples, and other supporting materials—​from each xref:standard-directories.adoc[content source root subtree.] Then it creates a virtual file of each input file.
+
+Assign files to component version buckets::
+Antora reads the component version descriptor ( [.path]_antora.yml_) files.
++
+A xref:component-version-descriptor.adoc[component version descriptor] associates the files under it with a specified component name and version, that is, a component version. This allows the files to be decoupled from the repository in which they live and makes Antora’s URL agnostic xref:page:xref.adoc[cross references] possible.
++
+Antora assigns the descriptor information and other source metadata to the virtual files. Then it sorts each file into a virtual collection based on the assigned component version data.
++
+A xref:component-version.adoc[component version] typically represents a discrete and unique version of the documentation for a project, library, service, or training course.
+

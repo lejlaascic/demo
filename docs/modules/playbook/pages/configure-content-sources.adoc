@@ -1,0 +1,139 @@
+= Content Keys
+
+The playbook keys configured under `content` and `sources` define the locations of the content source repositories and how they’re processed.
+
+[#content-key]
+== content key
+
+The content sources git references and other source location properties are defined under the required `content` key. The `branches`, `tags`, and `edit_url` keys can be specified directly on `content`. They can also be listed under `sources` or under both `content` and `sources` in a playbook.
+
+[,yaml]
+----
+content: # <.>
+  branches: [v2.0, v2.5, v3.0] # <.>
+  tags: [release/*, '!release/*-patch'] # <.>
+  edit_url: '{web_url}/blob/{refname}/{path}' # <.>
+  sources: # <.>
+  - url: https://git-service.com/org/repo-z.git # <.>
+    start_path: path-to/content-source-root # <.>
+  - url: https://git-service.com/org/repo-y.git # <.>
+----
+
+<.> Required `content` key
+<.> Optional `branches` key
+<.> Optional `tag` key
+<.> Optional `edit_url` key
+<.> Required `sources` key
+<.> Required `url` key
+<.> Optional `start_path` key
+<.> Another `url` key
+
+The `content` and `sources` keys are required. The `sources` key must contain at least one entry with the `url` key defined. All other keys are optional. The `branches` and `edit_url` keys have built-in values Antora automatically applies at runtime if they’re not explicitly set in the playbook.
+
+Keys-value pairs that are specified directly under `content` are applied to all of the `url` key entries under `sources`, unless the `key` is also specified on a specific `url`.
+
+[#sources-key]
+== sources key
+
+The `sources` key is required and nested under the content key. The `sources` key contains a list of source entries, which consist of a git repository location, branch and tag name patterns, and other repository properties that Antora uses when aggregating the site content. The `sources` key must contain at least one entry with a `url` key defined.
+
+[,yaml]
+----
+content: # <.>
+  sources: # <.>
+  - url: https://git-service.com/org/repo-z.git # <.>
+    branches: [v1.*, v2.*, !v1.2] # <.>
+    start_paths: path-to/content-source-root-{item..item} # <.>
+  - url: https://git-service.com/org/repo-y.git # <.>
+    branches: [] # <.>
+    tags: [release/*, '!release/*-patch'] # <.>
+    start_path: path-to/content-source-root # <.>
+    edit_url: '{web_url}/blob/{refname}/{path}' # <.>
+  - url: https://git-service.com/org/repo-x.git # <.>
+    branches: v* # <.>
+    version: true # <.>
+----
+
+<.> Required `content` key
+<.> Required `sources` key
+<.> Required `url` key
+<.> Optional `branches` key
+<.> Optional `start_path` key
+<.> Another `url` key
+<.> Optional `branches` key
+<.> Optional `tags` key
+<.> Optional `start_path` key
+<.> Optional `edit_url` key
+<.> Another `url` key
+<.> Optional `branches` key
+<.> Optional `version` key
+
+The `content` and `sources` keys are required. The `sources` key must contain at least one entry with the `url` key defined. All other keys are optional. The `branches` and `edit_url` keys have built-in values Antora automatically applies at runtime if they’re not explicitly defined in the playbook.
+
+[#available-content-keys]
+== Available content keys
+
+The following keys can be defined under the `content` key. With the exception of the sources key, which contains the source entries themselves, these keys are used to provide default values for each source entry.
+
+[cols="3,6,1"]
+|===
+|Content Keys |Description |Required
+
+|branches 
+|Accepts a list of exact branch names and name patterns to use from the repository specified in the content source.
+|No
+
+|edit_url
+|Accepts a URL pattern for building the URL that maps to the source view for the current page. Accommodates the following placeholder segments: {`web_url`}, {`refname`}, {`refhash`}, and {`path`}.
+|No
+
+|sources
+|Accepts a list of content source entries that specify which repositories and repository references to use as content.
+|Yes
+
+|tags
+|Accepts a list of exact tag names and name patterns to use from the repository specified in the content source.
+|No
+
+|===
+
+[#available-cntent-source-keys]
+== Available content source keys
+
+[cols="3,6,1"]
+|===
+|Content Keys |Description |Required
+
+|branches
+|Accepts a list of exact branch names and name patterns to use from the repository specified in the content source. If not specified, defaults to the value of the branches key defined on the content key.
+|No
+
+|edit_url
+|Accepts a URL pattern for building the URL that maps to the source view for the current page. Accommodates the following placeholder segments: {`web_url`}, {`refname`}, {`refhash`}, and {`path`}.
+|No
+
+|start_path
+|Specifies the relative path in the repository to a content source root’s location.
+|No
+
+|start_paths
+|Accepts a list of repository relative path patterns to content source root locations, either as exact paths or shell glob patterns. Single values are coerced into an array.
+|No
+
+|tags
+|Accepts a list of exact tag names and name patterns to use from the repository specified in the content source.
+|No
+
+|url
+|Accepts the URL of a git repository, which can either be an HTTPS URL or a local filesystem path.
+|Yes
+
+|version
+|Provides a fallback value for the `version` key in the component version descriptor for all references matched.
+|No
+
+|worktrees
+|Accepts a keyword or list of exact branch names or name patterns to control which corresponding worktrees Antora should use.
+|No
+
+|===

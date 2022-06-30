@@ -1,0 +1,72 @@
+= Span Columns and Rows
+
+A table cell can span more than one column and row.
+
+== Span factor and operator
+
+With a *span* a table cell can stretch across adjacent columns, rows, or a block of adjacent columns and rows. A span consists of a span factor and a span operator.
+
+The *span factor* indicates the number columns, rows, or columns and rows a cell should span.
+
+[[column-factor]]Column span factor::
+A single integer (`<n>`) that represents the number of consecutive columns a cell should span.
+[[row-factor]]Row span factor::
+A single integer prefixed with a dot (`.<n>`) that represents the number of consecutive rows a cell should span.
+[[block-factor]]Block span factor::
+Two integers (`<n>.<n>`) that represent a block of adjacent columns and rows a cell should span. The first integer, `<n>`, is the column span factor. The second integer, which is prefixed with a dot, `.<n>`, is the row span factor.
+
+The span operator is a plus sign (`+`) placed directly after the span factor (`<n>.<n>+`). The span operator tells the converter to interpret the span factor as part of a span instead of a duplication.
+
+A span is the first operator in a xref:add-cells-and-rows.adoc[cell specifier].
+
+== Span multiple columns
+
+To have a cell span consecutive columns, enter the <<column-factor,column span factor>> and span operator (`<n>+`) in the cell specifier. Don’t insert any spaces between the span, any alignment or style operators (if present), and the xref:add-cells-and-rows.adoc#cell-specifiers[cell’s separator] (`|`).
+
+.Span three columns with a cell
+[source#ex-cell]
+----
+include::../examples/example-table.adoc[tag=table-z]
+----
+
+The table from <<ex-cell, Example 1>> is displayed below.
+
+.Result of <<ex-cell>> 
+====
+include::../examples/example-table.adoc[tag=table-z]
+====
+
+== Span multiple rows
+
+To have a cell span consecutive rows, enter the <<row-factor,row span factor>> and span operator (.<n>+) in the cell specifier. Remember to prefix the span factor with a dot (.). Don’t insert any spaces between the span, any alignment or style operators (if present), and the xref:add-cells-and-rows.adoc#cell-specifiers[cell’s separator] (`|`).
+
+.Span two rows with a cell
+[source#ex-two-rows]
+----
+include::../examples/example-table.adoc[tag=table-x]
+----
+
+The table from <<ex-two-rows, Example 2>> is displayed below.
+
+.Result from <<ex-two-rows>>
+====
+include::../examples/example-table.adoc[tag=table-x]
+====
+
+== Span columns and rows
+
+A single cell can span a block of adjacent columns and rows. Enter the column span factor (`<n>`), followed by the row span factor (`.<n>`), and then the span operator (`+`).
+
+.Span two columns and three rows with a single cell
+[source#ex-two-columns]
+----
+include::../examples/example-table.adoc[tag=table-y]
+----
+
+The table from <<ex-two-columns, Example 3>> is displayed below.
+
+.Result of <<ex-two-columns>>
+====
+include::../examples/example-table.adoc[tag=table-y]
+====
+

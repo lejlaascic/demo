@@ -1,0 +1,27 @@
+//tag::a-text[]
+It has *strong* significance to me.
+
+I _cannot_ stress this enough.
+
+Type `OK` to accept.
+
+That *_really_* has to go.
+
+Can't pick one? Let's use them `*_all_*`.
+//end::a-text[]
+
+
+//tag::b-text[]
+**C**reate, **R**ead, **U**pdate, and **D**elete (CRUD)
+
+That's fan__freakin__tastic!
+
+Don't pass generic ``Object``s to methods that accept ``String``s!
+
+It was Beatle**__mania__**!
+//end::b-text[]
+
+
+//tag::c-text[]
+
+//end::c-text[]

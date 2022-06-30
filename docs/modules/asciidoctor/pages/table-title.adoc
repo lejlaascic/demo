@@ -1,0 +1,134 @@
+= Add a Title to a Table
+
+A table can have an optional title. To add a title to a table, use the block title syntax.
+
+.Add an optional title to a table
+[source#ex-optional-title]
+----
+.Example 1: A table with a title # <.>
+|===
+|Column 1, header row |Column 2, header row
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+----
+<.> On the line directly above the table’s opening delimiter (or its attribute list), enter a dot (.) directly followed by the text of the title.
+
+The table from <<ex-optional-title, Example 1>> is displayed below.
+
+====
+include::../examples/example-table.adoc[tag=table-a]
+====
+
+You’ll notice in the above result, that the processor automatically added Table 1. in front of the table’s title. This title label can be <<ex-customize-title, customized >>or deactivated.
+
+== Customize the Title Label
+
+When you <<ex-optional-title, add a title to a table>>, the processor automatically prefixes it with the label _Table_  _<n>._, where _<n>_ is the 1-based index of all of the titled tables in the document. This label can be modified at the document level or per table. It can also be deactivated.
+
+In the document header, set the `table-caption` attribute and assign it your custom label text.
+
+----
+= Document Title
+:table-caption: Data Set # <.> <.>
+----
+<.>  Set the document attribute `table-caption` and assign it the text you want to precede each table title.
+<.>  Don’t enter a number after the label text. The processor will automatically insert and increment the number.
+
+.Example 1: Add two titled tables and one untitled table to a document
+[source#ex-customize-title]
+----
+= Document Title
+:table-caption: Data Set
+
+.A table with a title
+[cols="2,1"
+|===
+|Lots and lots of data |A little data
+
+|834,734 
+|3
+
+|3,999,271.5601 
+|5
+
+|===]
+
+|===
+|Group |Climate |Example
+
+|A
+|Tropical
+|Suva, Fiji
+
+|B
+|Arid
+|Lima, Peru
+
+|===
+
+.Another table with a title
+|===
+|Value |Result |Notes
+
+|Null |A mystery |See Appendix R
+|===
+----
+
+Since `table-caption` is assigned the value `Data Set`, any table title should be preceded with the label _Data Set <n>_. The three tables from <<ex-customize-title, Example 1>> are displayed below.
+
+====
+include::../examples/example-table.adoc[tag=table-c]
+====
+
+Notice that the table that doesn’t have a title didn’t get a label nor was it counted when the processor incremented the label number. Therefore, the third table is assigned the label _Data Set 3_.
+
+== Modify the label of an individual table using caption
+
+You can customize the label on an individusl table by seting the `caption` attribute. (Don't let the name of the attribute mislead you. The caption attribute only sets the caption's label, not the whole caption line). When using `caption`, assign it the exact value you want displayed (including trailing space). Labels assigned using `caption` don't get an automatically incremented number and only apply to the table they thay are set on.
+
+CAUTION: If you want a space between the label and the title, you must add a trailing space to the value of the caption attribute. 
+
+.Example 2: Modify the label using caption
+[source#ex-modify-label]
+----
+[caption="TAble A. "] # <.> <.>
+.A table with a custom label
+[cols="3*"]
+|===
+|Null
+|A mystery
+|See Appendix R
+|===
+----
+
+<.> Create an attribute list directly above the table’s title and set the named attribute `caption`, followed by an equals sign (`=`), and then a value.
+<.> Enclose the value in double quotation marks (`"`). Otherwise the processor will remove any trailing whitespaces, and the title text will start directly after the last character of the label.
+
+The table from <<ex-modify-label>> is displayed below.
+====
+include::../examples/example-table.adoc[tag=table-d]
+====
+
+If you create any subsequent tables in your document and don’t set `caption` on them, the title labels will revert to the value assigned to `table-caption`.
+
+----
+[caption=,title='{table-caption} {counter:table-number}']
+[%header,cols=2*]
+|===
+|Name of Column 1
+|Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+----
+
+Result of the table is displayed below:
+====
+include::../examples/example-table.adoc[tag=table-e]
+====

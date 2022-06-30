@@ -1,0 +1,90 @@
+= Supported Platforms and System Requirements
+:navtitle: Supported Platforms
+// URLs
+:url-repo: https://gitlab.com/antora/antora
+:url-issues: {url-repo}/issues
+
+Antora runs on Linux, macOS, and Windows. Thanks to this broad platform support, Antora is also used on many cloud platforms and continuous integration and delivery servers.
+
+== Platforms
+
+Our general policy is to align Antora’s support of a platform version with the upstream project’s lifecycle schedule for that version. When a platform version reaches the end of active support by its maintainers or its end of life (EOL)—​which ever comes first—​Antora no longer supports it.
+
+[cols="20,25a, width:50%"]
+|===
+|Supported Platform |Supported Version(s)
+
+|Alpine Linux 
+|≥ 3.12
+
+|Debian
+|≥ 10.11
+
+|Fedora
+|≥ 34
+
+|Ubuntu
+|[%hardbreaks]
+18.04 LTS
+20.04 LTS
+
+|macOS
+|[%hardbreaks]
+Catalina (10.15)
+Big Sur (11)
+Monterey (12)
+
+|Microsoft
+|[%hardbreaks]
+Windows 10
+Windows 11
+Windows Server 2016
+Windows Server 2019
+
+|Chrome
+|Latest stable version
+
+|Firefox
+|Latest stable version
+
+|MS Edge
+|Latest stable version
+
+|Node.js
+|[%hardbreaks]
+12
+14
+16
+|===
+
+.About the Antora Test Suite
+****
+At last count, Antora had over 1940 tests that cover 99% of the lines. You could say we’re just a teeny-tiny bit obsessed with writing high quality tests and improving test coverage.
+****
+
+=== Cloud platforms
+
+Antora should operate as designed on common cloud platforms. How you provision your cloud instance depends on your workload requirements and remote git repository sizes. If you’re running Antora on a cloud platform, we would love to hear about your experience (open a {url-issues}[new issue^] or join us in Antora’s {url-chat}[community chat^]).
+
+== Hardware recommendations
+
+Your hardware requirements will depend primarily on the size of the remote git repositories your Antora pipeline fetches content from when it is generating your site.
+
+The first time Antora runs, it fetches and clones all of the remote git repositories specified in a playbook. The speed of this operation is dictated by the size of the remote repositories, environment input/output parameters, and network performance. After the initial run, Antora caches the repositories locally. On subsequent runs, Antora only reconnects to the remote repositories if the xref:runtime_fetch.adoc[fetch option]is enabled or the xref:runtime-cache-dir.adoc[cache folder] is removed.
+
+[cols="2s,4, width:75%"]
+|===
+|RAM 
+|Memory requirements depend on the size of your Git repositories. 3GB should provide sufficient headroom.
+
+|I/O
+|Maximum throughput and minimum latency always make things nicer but aren’t required
+|===
+
+== Learn more
+* xref:upgrade_antora.adoc[Upgrate to the leatest Antora release.]
+* Install Antora for the first time on:
+** xref:linux_requirements.adoc[Linux]
+** xref:macos_requirements.adoc[macOS]
+** xref:windows_requirements.adoc[Windows]
+* Try the official Antora Docker container.

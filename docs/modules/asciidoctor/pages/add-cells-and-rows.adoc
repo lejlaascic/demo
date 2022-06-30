@@ -1,0 +1,76 @@
+= Add Cells and Rows to a Table
+
+[#table-cells]
+== Table cells
+
+Each new cell in a table is declared with a cell separator. The default *cell separator* is a vertical bar (`|`). All of the content entered after a cell separator is included in that cell until the processor encounters a space followed by another vertical bar (`|`) or a new line that begins with a `|`.
+
+.Creating table cells with the default cell separator
+[source, asciidoc]
+----
+[cols="3,2,3"]
+|===
+|This content is placed in the first cell of column 1
+|This line starts with a vertical bar so this content is placed in a new cell in column 2 |When the processor encounters a whitespace followed by a vertical bar it ends the previous cell and starts a new cell
+|===
+----
+
+When the processor encounters another `|`, it creates a new cell in the next consecutive column. Once the processor reaches the xref:add-columns-table.adoc[last column assigned to the table], the next cell it encounters is placed in a new row. Taking into account any spans, which are applied via a cell specifier, each row consists of the same number of cells.
+
+[#cell-specifiers]
+=== Cell specifiers and operators
+
+A *cell specifier* is a positional attribute placed directly in front of a cell separator that represents the position and style properties assigned to a cell’s content. In the example below, a horizontal alignment operator and style operator have been assigned to the first cell’s specifier.
+
+.Using cellspecifiers
+[source, asciidoc]
+----
+[cols="2*"]
+|===
+>s|This cell's specifier indicates that this cell's content is right-aligned and bold.
+|The cell specifier on this cell hasn't been set explicitly, so the  default properties are applied.
+|===
+----
+
+AsciiDoc provides operators to control the following cell properties:
+
+* xref:span-cells-androws.adoc[span]
+* xref:duplicate-cells.adoc[duplication]
+* xref:align-bycell.adoc#horizontal-opetators[horizontal alignment]
+* xref:align-bycell.adoc#vertical-operators[vertical alignment]
+* xref:format-cell.adoc[content style]
+
+
+
+[#create-cell]
+== Create a table cell
+
+In this section, we’ll set up a table and add two rows of cells to it. First, let’s create two cells in <<ex-two-cells,Example 3>> and see how they get arranged into a row.
+
+.Add two cells to a table
+[source#ex-two-cells]
+----
+[cols="1,1"] # <.>
+|===
+|This cell is in column 1, row 1 # <.>
+This cell is in column 2, row 1 # <.>
+|===
+----
+
+<.> The table has two columns because two column specifiers are assigned to the `cols `attribute.
+<.>  The processor places this cell in the first column and row of the table because the vertical bar (`|`) at the beginning of this cell is the first cell separator the processor encounters after the opening table delimiter (`|===`).
+<.>  This is the second `|` the processor encounters, so this cell is placed in the second column of the first row.
+
+Though the two cells in <<ex-two-cells, Example 3>> were entered on separate lines, the processor places them in the same row.
+
+.Result of <<ex-two-cells, Example 3>>
+[cols="1,1"] 
+|===
+|This cell is in column 1, row 1 
+|This cell is in column 2, row 1 
+|===
+
+[#enter-row-cells]
+== Enter a row’s cells on a single line
+
+== Enter a row’s cells on consecutive lines

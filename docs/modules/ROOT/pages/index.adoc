@@ -1,33 +1,40 @@
-= Welcome to Component B!
-:navtitle: Welcome
+= Antora Documentation
 
-This is the automatic start page for version *{page-component-display-version}* of Component B.
+[discrete]
+=== The Static Site Generator for Tech Writers
 
-Component B is one of two documentation components in the Antora Demo.
-The other docs component, Component A, can be accessed using the component selector menu (aka component drawer) at the bottom of the menu on the left side of the page.
+This site hosts the tehnical documentation for Antora. 
+Antora makes it easy for tech writers to create documentation and publish it to the web.
+As a tech writer, you focus on authoring content in xref:asciidoc:asciidoc.adoc[AsciiDoc], Antora's content markup lenguage.
+You organize those files into a standard project structure and store them in one or more content (git) repositories. 
+Antora picks up your content from there and transforms it into a website. 
+That’s all there is to it!
 
-== Page source
+== Manage docs as code
 
-This page is sourced from the AsciiDoc file named [.path]_index.adoc_ that is located at [.path]_demo-component-b/docs/modules/ROOT/pages_.
+With Antora, you menage *docs as code*.
+That means your documentation process benefits from the same practices used to produce successful software.
 
-=== Why is this the home page of Component B?
+Some of these practices include:
 
-This page is automatically used as the start page of Component B because it is stored in the ROOT module and named [.path]_index.adoc_.
+* Storing content in a version control system.
+* Separating content, configuration, and presentation.
+* Leveraging automation for compilation, validation, verification, and publishing.
+* Reusing shared materials (DRY).
 
-=== Why is this the home page of the Antora Demo site?
+Antora helps you incorporate these practices into your documentation workflow. As a result, your documentation is much easier to manage, maintain, and enhance.
 
-This page is used as the home page for the Antora Demo because it is assigned as the site `start_page` in the Demo site's playbook file [.path]_site.yml_.
+== Where to begin
 
-== Cross reference syntax to target this page
+If you're just beginning your journey with Antora, you'll probably want to know xref:features.adoc[how Antora can help you.]
+When you're familiar with this basic concepts, you can try out Antora using the xref:install_and_run_quickstart.adoc[Antora quickstart guide.]
 
-To create a cross reference *to this page from another page in the ROOT module of Component B*, the xref syntax would be `\xref:index.adoc[]`.
+If you're ready to set up a new documentation project, or you want to migrate an existing project to Antora, start by xref:organize_content_files.adoc [organizing your documentation files] into the project structure Antora expects.You'll then need to xref:playbook:index.adoc[create a playbook] to tell Antora where to find the documentation and UI to use for your site.
 
-To create a cross reference *to this page from a page in Module One of Component B*, the xref syntax would be `\xref:ROOT:index.adoc[]`.
+If you already have a documentation component set up, and you're ready to create your first site, check that you've met Antora's xref:install:supported_platforms.adoc[system requirements],then xref:install:install_antora.adoc[install Antora], and finally xref:run_antora.adoc[generate your site] using the `antora` command.
 
-=== Always target the latest version of this page
+If you want to jump into writing, learn how to use the Asciidoc syntax to xref:page:index.adoc[make documentation pages.]
 
-To create a cross reference *to the latest version of this page from a page in Component A*, the xref syntax would be `\xref:component-b::index.adoc[]`.
+If you want to dive deeper into the details of the site generator pipeline, check out xref:how_antora_works.adoc[how Antora works.]
 
-=== Target a specific version of this page
-
-To create a cross reference *to version 1.0 of this page from a page in Component A*, the xref syntax would be `\xref:1.0@component-b::index.adoc[]`.
+We hope you find making documentation sites with Antora enjoyable and rewarding. Happy writing!

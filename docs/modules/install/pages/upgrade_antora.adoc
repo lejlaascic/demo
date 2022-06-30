@@ -1,0 +1,17 @@
+= Upgrade Antora
+
+On this page you'll learn:
+
+* [x] How to upgrade Node.js.
+* [x] How to upgrade Antora globally.
+* [x] How to upgrade the Antora CLI and site generator individually.
+
+== Upgrate checklist
+
+== Upgrade Node.js(optional)
+
+== Upgrade Antora locally
+
+== Upgrade Antora globally
+
+== Learn more

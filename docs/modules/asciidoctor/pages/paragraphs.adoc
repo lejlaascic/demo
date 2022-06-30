@@ -1,0 +1,54 @@
+
+
+= Paragraphs
+
+.Paragraph
+[#ex-paragraph]
+[,asciidoc]
+----
+include::../examples/example-text.adoc[tag=a-para]
+----
+
+View result of <<ex-paragraph>>
+[%collapsible.result]
+====
+include::../examples/example-text.adoc[tag=a-para]
+====
+
+.Literal paragraph
+[#ex-literal-paragraph]
+[,asciidoc]
+----
+include::../examples/example-text.adoc[tag=b-para]
+----
+View result of <<ex-literal-paragraph>>
+[%collapsible,result]
+====
+include::../examples/example-text.adoc[tag=b-para]
+====
+
+.Hard line breaks
+[#ex-hardline-breaks]
+[,asciidoc]
+----
+include::../examples/example-text.adoc[tag=c-para]
+----
+View result of <<ex-hardline-breaks>>
+[%collapsible,result]
+====
+include::../examples/example-text.adoc[tag=c-para]
+====
+
+.Lead paragraph
+[#ex-load-paragraph]
+[,asciidoc]
+----
+include::../examples/example-text.adoc[tag=d-para]
+----
+View result of <<ex-load-paragraph>>
+[%collapsible,result]
+====
+include::../examples/example-text.adoc[tag=d-para]
+====
+
+TIP: The default Asciidoctor stylesheet automatically styles the first paragraph of the preamble as a lead paragraph if no role is specified on that paragraph. 

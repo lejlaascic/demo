@@ -1,0 +1,37 @@
+//tag::a-para[]
+Paragraphs don't require special markup in AsciiDoc.
+A paragraph is defined by one or more consecutive lines of text.
+Line breaks within a paragraph are not displayed.
+
+Leave at least one empty line to begin a new paragraph.
+//end::a-para[]
+
+//tag::b-para[]
+A normal paragraph.
+
+ A literal paragraph.
+ One or more consecutive lines indented by at least one space.
+
+ The text is shown in a fixed-width (typically monospace) font.
+ The lines are preformatted (i.e., as formatted in the source).
+ Spaces and newlines,
+ like the ones in this sentence,
+ are preserved.
+//end::b-para[]
+
+//tag::c-para[]
+Roses are red, +
+violets are blue.
+
+[%hardbreaks]
+A ruby is red.
+Java is black.
+//end::c-para[]
+
+
+//tag::d-para[]
+[.lead]
+This text will be styled as a lead paragraph (i.e., larger font).
+
+This paragraph will not be.
+//end::d-para[]

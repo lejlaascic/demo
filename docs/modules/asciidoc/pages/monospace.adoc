@@ -1,0 +1,63 @@
+= Monospace
+:url-asciidoc: https://docs.asciidoctor.org/asciidoc/latest
+:url-monospace: {url-asciidoc}/text/onospace/
+:url-formatting: {url-asciidoc}/text/#formatting-marks-and-pairs
+:url-constrained: {url-asciidoc}/text/troubleshoot-unconstrained-formatting/
+
+On this page, you'll learn:
+
+* [x]  How to apply monospace formatting to inline text in AsciiDoc.
+* [x]  Where to modify your site’s inline monospace text styling.
+
+Technical content often requires text to be styled in a way that indicates it is a command or source code. Such text is usually emphasized using a fixed-width, i.e., monospace, font.
+
+== Inline monospace syntax
+A word or phrase is marked as italic when it is enclosed in a single set of underscores (`_word_`) (constrained formatting). Bounded characters are marked as italic when they’re enclosed in a set of double underscores (`char__act__ers`) (unconstrained formatting).
+
+Bounded characters are characters that are:
+
+* directly preceded by a non-whitespace character, or
+* directly followed by a non-whitespace character.
+
+You don’t need to use double underscores when an entire word or phrase marked as italic is directly followed by a common punctuation mark, such as `;`, `"`, and `!`.
+
+.Monospace inline formatting
+[#ex-monospace]
+----
+An monospace _word_, and an monospace _phrase of text_.
+
+Monospace c__hara__cter__s__ within a word.
+----
+The result of <<ex-monospace>> id displayed bellow.
+
+====
+An monospace word, and an monospace phrase of text.
+
+Monospace characters within a word.
+====
+
+== Mixing monospace with other formatting
+You can add multiple emphasis styles to monospace text as long as the syntax is placed in the correct order.
+
+.Order of inline formatting syntax
+[#ex-format]
+----
+`*_monospace bold italic phrase_*` & ``**__char__**``acter``**__s__**``
+----
+
+xref:monospace.adoc[Monospace syntax] (```) must be the outermost formatting set. xref:bold.adoc[Bold syntax] (`*`) must be outside the italics formatting set. Italic syntax is always the innermost formatting set.
+
+The result of <<ex-format>> is displayed bellow.
+
+====
+monospace bold italic phrase & characters
+====
+
+== Sites styles
+How monospace text appears on your site depends on the fonts loaded by your UI and any CSS styles applied to the `<ecode>` HTML tag. You can learn more about customizing how monospace text appears in your site in the UI documentation.
+
+.AsciiDoc and AsciiDoctor resources
+
+* {url-monospace}[Monospace text formatting]
+* {url-formatting}[Formatting marks and pairs]
+* {url-constrained}[Constrained versus unconstrained]

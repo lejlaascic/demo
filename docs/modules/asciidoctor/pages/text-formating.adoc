@@ -1,0 +1,25 @@
+= Text formatting
+
+.Constrained bold, italic, and monospace
+[#ex-constrained]
+[,asciidoc]
+----
+include::../examples/text-formating.adoc[tag=a-text]
+----
+View result of <<ex-constrained>>
+[%collapsible,result]
+====
+include::../examples/text-formating.adoc[tag=a-text]
+====
+
+.Unconstrained bold, italic, and monospace
+[#ex-unconstrained]
+[,asciidoc]
+----
+include::../examples/text-formating.adoc[tag=b-text]
+----
+View result of <<ex-unconstrained>>
+[%collapsible,result]
+====
+include::../examples/text-formating.adoc[tag=b-text]
+====

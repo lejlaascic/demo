@@ -1,0 +1,152 @@
+= Align Content by Column
+
+The alignment operators allow you to horizontally and vertically align a column’s content. They’re applied to a column specifier and xref:add-columns-table.adoc#ex-cols-attribute[assigned to the cols attribute].
+
+[#horizontal-alig]
+== Horizontal alignment operators
+
+Content can be horizontally aligned to the left or right side of the column as well as the center of the column.
+
+Flush left operator (<)::
+The less-than sign (`<`) left aligns the content. This is the default horizontal alignment.
+Flush right operator (>)::
+The greater-than sign (`>`) right aligns the content.
+Center operator (^)::
+The caret (`^`) centers the content.
+
+A horizontal alignment operator is entered in front a <<vertical-alig,vertical alignment>> operator (if present) and in front of a xref:column-width.adoc#column-width[column’s width] (if present). If the number of columns is assigned using a multiplier (`<n>*`), the horizontal alignment operator is placed directly after the multiplier operator (`*`).
+
+* `[cols="2,pass:q[#^#]1"]` A horizontal alignment operator is placed in front of the column width.
+* `[cols="pass:q[#>#].^1,2"]` A horizontal alignment operator is placed in front of a vertical alignment operator.
+* `[cols="pass:q[#>#],pass:q[#^#]"]` When a column width isn’t specified, a horizontal alignment operator can represent both the column and the column content’s alignment.
+* `[cols="3*pass:q[#>#]"]` The horizontal alignment operator is placed directly after a multiplier.
+
+=== Center content horizontally in a column
+
+To horizontally center the content in a column, place the `^` operator at the beginning of the xref:add-columns-table.adoc#ex-cols-attribute[column’s specifier.]
+
+.Center column content horizontally
+[source#ex-horizontally]
+----
+include::../examples/example-table.adoc[tag=table-o]
+----
+
+The table from <<ex-horizontally, Example 1>> is rendered below.
+====
+include::../examples/example-table.adoc[tag=table-o]
+====
+
+When the column are specified using the xref:add-column-table.adoc#column-multi[multilier], place the `^` operator after the multiplier operator (`*`).
+
+.Horizontal alignment and multiplier operator order
+[source#ex-horizontal-multi]
+----
+include::../examples/example-table.adoc[tag=table-p]
+----
+
+The table from <<ex-horizontal-multi,Example 2>> is randered bellow.
+
+.Result of <<ex-horizontal-multi>>
+====
+include::../examples/example-table.adoc[tag=table-p]
+====
+
+=== Right align content in a column
+
+To align the content in a column to its right side, place the `>` operator in front of the column’s specifier.
+
+.Right align column content
+[source#ex-right-align]
+----
+include::../examples/example-table.adoc[tag=table-r]
+----
+The table <<ex-right-align,Example 3>> is rendered bellow.
+
+.Result of  <<ex-right-align>> 
+====
+include::../examples/example-table.adoc[tag=table-r]
+====
+
+[#vertical-alig]
+== Vertical alignment operators
+
+Content can be vertically aligned to the top or bottom of a column’s cells as well as the center of a column. Vertical alignment operators always begin with a dot (`.`).
+
+Flush top operator (.<)::
+The dot and less-then sign(`.<`) aligns the content to the top of the column’s cells. This is the default vertical alignment.
+Flush bottom operator (.>)::
+The dot and greater-than sign (`.>`) aligns the content to the bottom of the column’s cells.
+Center operator (.^)::
+The dot and caret (`.^`) centers the content vertically.
+
+A vertical alignment operator is entered directly after a <<horizontal-alig,horizontal alignment operator>> (if present) and before a xref:column-width.adoc#column-width[column’s width] (if present). If the number of columns is assigned using a multiplier (`<n>*`), the vertical alignment operator is placed directly after the horizontal alignment operator (if present). Otherwise, it’s placed directly after the multiplier operator (`*`).
+
+* `[cols="2,pass:q[#.^#]1"]` A vertical alignment operator is placed in front of the column width.
+* `[cols=">pass:q[#.^#]1,2"]` The vertical alignment operator is placed after the horizontal alignment operator but before the column width
+* `[cols="pass:q[#.^#],pass:q[#.>#]"]` When a column width doesn’t need to be specified, a vertical alignment operator can represent both the column and the column content’s alignment.
+* `[cols="3*pass:q[#.>#]"]` The vertical alignment operator is placed directly after a multiplier unless there is a horizontal alignment operator. Then it’s placed after the horizontal alignment operator
+
+=== Align content to the bottom of a column's cells
+
+To align the content in a column to the bottom of each cell, place the `.>` operator directly in front of the xref:column-width.adoc#column-width[column’s width].
+
+.Bottom align column content
+[source#ex-bottom-align]
+----
+include::../examples/example-table.adoc[tag=table-s]
+----
+The table from <<ex-bottom-align,Example 5>> is rendered below.
+
+.Result of <<ex-bottom-align>>
+====
+include::../examples/example-table.adoc[tag=table-s]
+====
+
+=== Center content vertically in a column
+
+To vertically center the content in a column, place the `.^` operator directly in front of the xref:column-width.adoc#column-width[column’s width].
+
+.Center column content vertically
+[source#ex-center-vertically]
+----
+include::../examples/example-table.adoc[tag=table-t]
+----
+
+The table from <<ex-center-vertically, Example 6>> is rendered below.
+
+.Result of <<ex-center-vertically>>
+====
+include::../examples/example-table.adoc[tag=table-t]
+====
+
+To vertically align the content to the middle of the cells in all of the columns, enter the `.^` operator after the xref:add-column-table.adoc#column-multi[multiplier].
+
+.Vertical alignment and multiplier operator order
+[source#ex-vertical-align-multi]
+----
+include::../examples/example-table.adoc[tag=table-u]
+----
+
+The table from <<ex-vertical-align-multi,Example 7>> is rendered below.
+
+.Result of <<ex-vertical-align-multi>>
+====
+include::../examples/example-table.adoc[tag=table-u]
+====
+
+== Apply horizontal and vertical alignment operators to the same column
+
+A column can have a vertical and horizontal alignment operator placed on its xref:add-column-table.adoc#ex-cols-attribute[specifier]. The <<horizontal-alig,horizontal operator>> always precedes the vertical operator. Both operators precede the column width. When a xref:add-column-table.adoc#column-multi[multiplier] is used, the operators are placed after the multiplier.
+
+.Horizontally and vertically align column content
+[source#ex-horisontal-and-vertical]
+----
+include::../examples/example-table.adoc[tag=table-v]
+----
+
+The table from <<ex-horisontal-and-vertical,Example 8>> is rendered below.
+
+.Result of <<ex-horisontal-and-vertical>>
+====
+include::../examples/example-table.adoc[tag=table-v]
+====

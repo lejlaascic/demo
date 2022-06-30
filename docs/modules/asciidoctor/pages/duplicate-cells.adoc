@@ -1,0 +1,30 @@
+= Duplicate Cells
+
+The contents of a cell can be duplicated in consecutive cells.
+
+[#duplicate-factor]
+== Duplication factor and operator
+
+The duplication factor and operator are applied to a xref:add-cells-and-rows.adoc#cell-specifiers[cell’s specifier] and allow you to clone a cell’s content and properties across consecutive cells. A duplication is the first operator in a cell specifier.
+
+The *duplication factor* is a single integer (`<n>`) that indicates how many times the cell’s content should be duplicated.
+
+The *duplication operator* is an asterisk (`*`) placed directly after the duplication factor (`<n>*`). The duplication operator tells the converter to interpret the duplication factor as part of a duplication instead of a span.
+
+[#duplicate-cell]
+== Duplicate a cell and its properties
+
+To duplicate a cell, enter the duplication factor and duplication operator (`<n>*`) in the cell specifier. Don’t insert any spaces between the duplication, any alignment or style operators (if present), and the  xref:add-cells-and-rows.adoc#cell-specifiers[cell’s separator] (`|`).
+
+.Duplicate the contents of two cells
+[source#ex-duplicate-two-cells]
+----
+include::../examples/example-table.adoc[tag=table-w]
+----
+
+The table from <<ex-duplicate-two-cells,Example 1>> is displayed below.
+
+.Result of <<ex-duplicate-two-cells>>
+====
+include::../examples/example-table.adoc[tag=table-w]
+====
